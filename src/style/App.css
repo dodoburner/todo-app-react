@@ -22,24 +22,37 @@ label {
 .Task {
   border: 1px solid black;
   padding: 10px;
-  width: 200px;
-  display: flex;
+  width: 250px;
+  cursor: pointer;
 }
 
-.task-content-container,
-.task-text {
+.Task.completed {
+  text-decoration: line-through;
+}
+
+.task-top-part {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 5px;
+}
+
+.task-bottom-part {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.task-text {
   width: 100%;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
 }
 
 .completed .checkbox {
   background-color: red;
 }
 
-.checkbox {
-  height: 20px;
-  width: 20px;
-  border: 1px solid black;
-  cursor: pointer;
-}
