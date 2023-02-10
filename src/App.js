@@ -45,11 +45,17 @@ function App() {
     });
   };
 
+  const deleteTask = (id) => {
+    setTasks((prevTasks) => [...prevTasks.filter((el) => el.id !== id)]);
+  };
+
   return (
     <div className="App">
       <div>
         <TaskForm setTasks={setTasks} />
-        <taskContext.Provider value={{ setCompleted, rearrangeTasks }}>
+        <taskContext.Provider
+          value={{ setCompleted, rearrangeTasks, deleteTask }}
+        >
           <Tasks tasks={tasks} />
         </taskContext.Provider>
       </div>

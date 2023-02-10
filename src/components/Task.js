@@ -3,7 +3,7 @@ import { taskContext } from "../App";
 
 const Task = ({ task, index }) => {
   const { title, description, completed, id } = task;
-  const { setCompleted, rearrangeTasks } = useContext(taskContext);
+  const { setCompleted, rearrangeTasks, deleteTask } = useContext(taskContext);
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
 
   const handleClick = (e) => {
@@ -33,12 +33,12 @@ const Task = ({ task, index }) => {
       <>
         <p>{description}</p>
         <div className="description-btn">
-          <i className="fa-solid fa-chevron-up"></i>
+          <i className="fa-solid fa-chevron-up" />
         </div>
       </>
     ) : (
       <div className="description-btn">
-        <i className="fa-solid fa-chevron-down"></i>
+        <i className="fa-solid fa-chevron-down" />
       </div>
     );
   };
@@ -62,8 +62,8 @@ const Task = ({ task, index }) => {
 
         <p className="task-text">{title}</p>
 
-        <div>
-          <i className="fa-regular fa-trash-can"></i>{" "}
+        <div onClick={() => deleteTask(id)}>
+          <i className="fa-regular fa-trash-can" />
         </div>
       </div>
 
