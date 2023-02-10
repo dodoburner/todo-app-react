@@ -3,18 +3,17 @@ import Task from "./Task";
 const Tasks = ({ tasks, setCompleted }) => {
   return (
     <div>
-      <div className="Tasks">
+      <ul className="Tasks">
         {tasks.map((task) => {
-          const { title, description, completed, id } = task;
           return (
             <Task
               task={task}
               setCompleted={setCompleted}
-              key={id}
+              key={task.id}
             />
           )
         })}
-      </div>
+      </ul>
     </div>
   )
 }
