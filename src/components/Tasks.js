@@ -1,14 +1,14 @@
 import Task from "./Task";
 
-const Tasks = ({ tasks, setCompleted }) => {
+const Tasks = ({ tasks }) => {
   return (
     <div>
       <ul className="Tasks">
-        {tasks.map((task) => {
+        {tasks.map((task, index) => {
           return (
             <Task
               task={task}
-              setCompleted={setCompleted}
+              index={index}
               key={task.id}
             />
           )
