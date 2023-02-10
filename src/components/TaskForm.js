@@ -17,21 +17,36 @@ const TaskForm = ({ setTasks }) => {
     e.preventDefault();
     const todo = new Todo(title, description);
     setTasks((prev) => [...prev, todo]);
+    setTitle("");
+    setDescription("");
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        value={title}
-        onChange={((e) => setTitle(e.target.value))}
-        type="text"
-      />
-      <input
-        value={description}
-        onChange={((e) => setDescription(e.target.value))}
-        type="text"
-      />
-      <button type="submit">+</button>
+      <div>
+        <label htmlFor="title">
+          Title
+        </label>
+        <input
+          required
+          value={title}
+          onChange={((e) => setTitle(e.target.value))}
+          type="text"
+          name="title"
+        />
+      </div>
+      <div>
+        <label htmlFor="description">
+          Description
+        </label>
+        <input
+          value={description}
+          onChange={((e) => setDescription(e.target.value))}
+          type="text"
+          name="description"
+        />
+      </div>
+      <button type="submit" className="submit-btn">Create Task</button>
     </form>
   )
 }

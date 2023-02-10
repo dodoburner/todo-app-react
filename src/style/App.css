@@ -1,0 +1,35 @@
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+label {
+  display: block;
+}
+
+.Task {
+  display: flex;
+  gap: 10px;
+}
+
+.completed .checkbox {
+  background-color: red;
+}
+
+.checkbox {
+  height: 20px;
+  width: 20px;
+  border: 1px solid black;
+}

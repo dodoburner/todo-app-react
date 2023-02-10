@@ -1,7 +1,11 @@
-const Task = ({title, description, completed, id}) => {
+const Task = ({ title, description, completed, id, setCompleted }) => {
+  console.log(completed)
   return (
-    <div className="Task" key={id}>
-      <div></div>
+    <div className={`Task ${completed ? "completed" : ""}`}>
+      <div
+        onClick={() => { setCompleted(id) }}
+        className="checkbox"
+      />
       <p>{title}</p>
     </div>
   )

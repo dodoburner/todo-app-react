@@ -1,27 +1,24 @@
 import { useState } from 'react';
-import Task from './components/Task';
 import TaskForm from './components/TaskForm';
+import Tasks from './components/Tasks';
 import './style/App.css';
 
 function App() {
   const [tasks, setTasks] = useState([]);
 
+  const setCompleted = (id) => {
+    setTasks((prevTasks) => {
+      const task = prevTasks.find((el) => el.id === id);
+      task.completed = !task.completed;
+      return [...prevTasks];
+    })
+  }
+
   return (
     <div className="App">
-      <TaskForm setTasks={setTasks} />
-  
-      <div className="Tasks">
-        {tasks.map((task) => {
-          const { title, description, completed, id } = task;
-          return (
-            <Task
-              title={title}
-              description={description}
-              completed={completed}
-              id={id}
-            />
-          )
-        })}
+      <div>
+        <TaskForm setTasks={setTasks} />
+        <Tasks tasks={tasks} setCompleted={setCompleted} />
       </div>
     </div>
   );
