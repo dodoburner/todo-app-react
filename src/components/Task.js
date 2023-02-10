@@ -1,5 +1,5 @@
-const Task = ({ title, description, completed, id, setCompleted }) => {
-  console.log(completed)
+const Task = ({ task, setCompleted }) => {
+  const { title, description, completed, id } = task;
   return (
     <div className={`Task ${completed ? "completed" : ""}`}>
       <div

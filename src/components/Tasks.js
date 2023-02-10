@@ -8,11 +8,8 @@ const Tasks = ({ tasks, setCompleted }) => {
           const { title, description, completed, id } = task;
           return (
             <Task
-              title={title}
-              description={description}
-              completed={completed}
+              task={task}
               setCompleted={setCompleted}
-              id={id}
               key={id}
             />
           )
