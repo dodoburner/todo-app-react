@@ -16,9 +16,9 @@ function App() {
     });
   };
 
-  const rearrangeTasks = (draggedIndex, index) => {
+  const rearrangeTasks = (draggedIndex, dropIndex) => {
     setTasks((prevTasks) => {
-      prevTasks.splice(index, 0, prevTasks.splice(draggedIndex, 1)[0]);
+      prevTasks.splice(dropIndex, 0, prevTasks.splice(draggedIndex, 1)[0]);
       return [...prevTasks];
     });
   };

@@ -1,14 +1,6 @@
 import { useState } from "react";
 import ReactTextareaAutosize from "react-textarea-autosize";
-
-class Todo {
-  constructor(title, description) {
-    this.title = title;
-    this.description = description;
-    this.completed = false;
-    this.id = crypto.randomUUID();
-  }
-}
+import Todo from "../Todo";
 
 const TaskForm = ({ setTasks }) => {
   const [title, setTitle] = useState("");
@@ -16,6 +8,10 @@ const TaskForm = ({ setTasks }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!title.trim()) {
+      setTitle("");
+      return;
+    }
     const todo = new Todo(title, description);
     setTasks((prev) => [...prev, todo]);
     setTitle("");
