@@ -69,7 +69,9 @@ const Task = ({ task, index }) => {
             setCompleted(id);
           }}
           className="checkbox"
-        />
+        >
+          {completed ? <i className="fa-solid fa-check" /> : ""}
+        </div>
 
         <input
           required

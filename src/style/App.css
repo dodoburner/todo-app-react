@@ -27,7 +27,8 @@ label {
   border-radius: 3px;
 }
 
-.Task.completed {
+.Task.completed input,
+.Task.completed textarea {
   text-decoration: line-through;
 }
 
@@ -47,10 +48,13 @@ label {
   width: 20px;
   height: 20px;
   border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .completed .checkbox {
-  background-color: red;
+  border: none;
 }
 
 .title-input,
