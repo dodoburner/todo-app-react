@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import TaskForm from "./components/TaskForm";
 import Tasks from "./components/Tasks";
+import TasksFooter from "./components/TasksFooter";
 import "./style/App.css";
 
 export const taskContext = createContext(null);
@@ -28,6 +29,10 @@ function App() {
     setTasks((prevTasks) => [...prevTasks.filter((el) => el.id !== id)]);
   };
 
+  const clearCompleted = () => {
+    setTasks((prevTasks) => [...prevTasks.filter((el) => !el.completed)]);
+  };
+
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     setTasks(savedTasks);
@@ -46,6 +51,12 @@ function App() {
         >
           <Tasks tasks={tasks} status={status} />
         </taskContext.Provider>
+        <TasksFooter
+          tasks={tasks}
+          status={status}
+          setStatus={setStatus}
+          clearCompleted={clearCompleted}
+        />
       </div>
     </div>
   );
