@@ -7,6 +7,7 @@ export const taskContext = createContext(null);
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [status, setStatus] = useState("All");
 
   const setCompleted = (id) => {
     setTasks((prevTasks) => {
@@ -43,7 +44,7 @@ function App() {
         <taskContext.Provider
           value={{ setCompleted, rearrangeTasks, deleteTask }}
         >
-          <Tasks tasks={tasks} />
+          <Tasks tasks={tasks} status={status} />
         </taskContext.Provider>
       </div>
     </div>
