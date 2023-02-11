@@ -1,14 +1,21 @@
 import { useContext, useState } from "react";
+import ReactTextareaAutosize from "react-textarea-autosize";
 import { taskContext } from "../App";
 
 const Task = ({ task, index }) => {
-  const { title, description, completed, id } = task;
+  const {
+    title: prevTitle,
+    description: prevDescription,
+    completed,
+    id,
+  } = task;
+  const [title, setTitle] = useState(prevTitle);
+  const [description, setDescription] = useState(prevDescription);
   const { setCompleted, rearrangeTasks, deleteTask } = useContext(taskContext);
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
 
   const handleClick = (e) => {
-    const arr = ["checkbox", "fa-trash-can"];
-    if (!arr.some((el) => e.target.className.includes(el))) {
+    if (e.target.className !== "description-input") {
       setIsDescriptionOpen((prev) => !prev);
     }
   };
@@ -31,7 +38,12 @@ const Task = ({ task, index }) => {
   const renderDescription = () => {
     return isDescriptionOpen ? (
       <>
-        <p>{description}</p>
+        <ReactTextareaAutosize
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          name="description"
+          className="description-input"
+        />
         <div className="description-btn">
           <i className="fa-solid fa-chevron-up" />
         </div>
@@ -47,7 +59,6 @@ const Task = ({ task, index }) => {
     <li
       draggable
       className={`Task ${completed ? "completed" : ""}`}
-      onClick={handleClick}
       onDragStart={handleOnDrag}
       onDrop={handleOnDrop}
       onDragOver={handleOnDragOver}
@@ -60,14 +71,23 @@ const Task = ({ task, index }) => {
           className="checkbox"
         />
 
-        <p className="task-text">{title}</p>
+        <input
+          required
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          type="text"
+          name="title"
+          className="title-input"
+        />
 
         <div onClick={() => deleteTask(id)}>
           <i className="fa-regular fa-trash-can" />
         </div>
       </div>
 
-      <div className="task-bottom-part">{renderDescription()}</div>
+      <div onClick={handleClick} className="task-bottom-part">
+        {renderDescription()}
+      </div>
     </li>
   );
 };

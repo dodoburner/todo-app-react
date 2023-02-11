@@ -24,6 +24,8 @@ label {
   padding: 10px;
   width: 250px;
   cursor: pointer;
+  margin-bottom: 15px;
+  border-radius: 3px;
 }
 
 .Task.completed {
@@ -56,3 +58,17 @@ label {
   background-color: red;
 }
 
+.title-input,
+.description-input {
+  border: none;
+}
+
+.title-input {
+  padding: 5px;
+}
+
+.description-input {
+  min-width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+}
