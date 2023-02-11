@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useState } from "react";
+import ReactTextareaAutosize from "react-textarea-autosize";
 
 class Todo {
   constructor(title, description) {
     this.title = title;
     this.description = description;
-    this.completed = false
+    this.completed = false;
     this.id = crypto.randomUUID();
   }
 }
@@ -19,35 +20,33 @@ const TaskForm = ({ setTasks }) => {
     setTasks((prev) => [...prev, todo]);
     setTitle("");
     setDescription("");
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="title">
-          Title
-        </label>
-        <input
-          required
-          value={title}
-          onChange={((e) => setTitle(e.target.value))}
-          type="text"
-          name="title"
-        />
-      </div>
-      <div>
-        <label htmlFor="description">
-          Description
-        </label>
-        <textarea
-          value={description}
-          onChange={((e) => setDescription(e.target.value))}
-          name="description"
-        />
-      </div>
-      <button type="submit" className="submit-btn">Create Task</button>
+      <input
+        required
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        type="text"
+        name="title"
+        className="title-input"
+        placeholder="Title"
+      />
+
+      <ReactTextareaAutosize
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        name="description"
+        className="description-input"
+        placeholder="Description"
+      />
+
+      <button type="submit" className="submit-btn">
+        Create Task
+      </button>
     </form>
-  )
-}
+  );
+};
 
 export default TaskForm;

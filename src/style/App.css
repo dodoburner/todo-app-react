@@ -12,7 +12,11 @@ form {
   justify-content: center;
   flex-direction: column;
   margin-bottom: 20px;
-  gap: 10px;
+  border: 1px solid black;
+}
+
+form input {
+  width: 100%;
 }
 
 label {
