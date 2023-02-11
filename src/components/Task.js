@@ -11,10 +11,11 @@ const Task = ({ task, index }) => {
   } = task;
   const [title, setTitle] = useState(prevTitle);
   const [description, setDescription] = useState(prevDescription);
-  const { setCompleted, rearrangeTasks, deleteTask } = useContext(taskContext);
+  const { setCompleted, rearrangeTasks, deleteTask, updateTask } =
+    useContext(taskContext);
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
 
-  const handleClick = (e) => {
+  const handleArrowClick = (e) => {
     if (e.target.className !== "description-input") {
       setIsDescriptionOpen((prev) => !prev);
     }
@@ -35,12 +36,25 @@ const Task = ({ task, index }) => {
     e.dataTransfer.setData("text", index);
   };
 
+  const handleTitleUpdate = (e) => {
+    setTitle(e.target.value);
+    const trimmed = e.target.value.trim();
+    if (trimmed) {
+      updateTask(id, trimmed, description);
+    }
+  };
+
+  const handleDescriptionUpdate = (e) => {
+    setDescription(e.target.value);
+    updateTask(id, title, e.target.value);
+  };
+
   const renderDescription = () => {
     return isDescriptionOpen ? (
       <>
         <ReactTextareaAutosize
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={handleDescriptionUpdate}
           name="description"
           className="description-input"
         />
@@ -76,7 +90,7 @@ const Task = ({ task, index }) => {
         <input
           required
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={handleTitleUpdate}
           type="text"
           name="title"
           className="title-input"
@@ -87,7 +101,7 @@ const Task = ({ task, index }) => {
         </div>
       </div>
 
-      <div onClick={handleClick} className="task-bottom-part">
+      <div onClick={handleArrowClick} className="task-bottom-part">
         {renderDescription()}
       </div>
     </li>

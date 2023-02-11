@@ -12,7 +12,7 @@ const TaskForm = ({ setTasks }) => {
       setTitle("");
       return;
     }
-    const todo = new Todo(title, description);
+    const todo = new Todo(title.trim(), description.trim());
     setTasks((prev) => [...prev, todo]);
     setTitle("");
     setDescription("");

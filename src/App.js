@@ -29,6 +29,15 @@ function App() {
     setTasks((prevTasks) => [...prevTasks.filter((el) => el.id !== id)]);
   };
 
+  const updateTask = (id, title, description) => {
+    setTasks((prevTasks) => {
+      const task = prevTasks.find((el) => el.id === id);
+      task.title = title;
+      task.description = description;
+      return [...prevTasks];
+    });
+  };
+
   const clearCompleted = () => {
     setTasks((prevTasks) => [...prevTasks.filter((el) => !el.completed)]);
   };
@@ -44,10 +53,10 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <div className="content-container">
         <TaskForm setTasks={setTasks} />
         <taskContext.Provider
-          value={{ setCompleted, rearrangeTasks, deleteTask }}
+          value={{ setCompleted, rearrangeTasks, deleteTask, updateTask }}
         >
           <Tasks tasks={tasks} status={status} />
         </taskContext.Provider>
