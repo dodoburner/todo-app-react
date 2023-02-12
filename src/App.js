@@ -72,7 +72,7 @@ function App() {
         </div>
       </div>
 
-      <p className="drag-text">Drag and drop to reorder list</p> 
+      <p className="drag-text">Drag and drop to reorder list</p>
     </div>
   );
 }

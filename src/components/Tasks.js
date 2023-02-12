@@ -2,23 +2,19 @@ import Task from "./Task";
 
 const Tasks = ({ tasks, status }) => {
   const renderTasks = () => {
+    const mapped = tasks.map((task, index) => {
+      return <Task task={task} index={index} key={task.id} />;
+    });
+
     if (status === "All") {
-      return tasks.map((task, index) => {
-        return <Task task={task} index={index} key={task.id} />;
-      });
+      return mapped;
     }
 
     if (status === "Active") {
-      const filtered = tasks.filter((el) => !el.completed);
-      return filtered.map((task, index) => {
-        return <Task task={task} index={index} key={task.id} />;
-      });
+      return mapped.filter((el) => !el.props.task.completed);
     }
 
-    const filtered = tasks.filter((el) => el.completed);
-    return filtered.map((task, index) => {
-      return <Task task={task} index={index} key={task.id} />;
-    });
+    return mapped.filter((el) => el.props.task.completed);
   };
 
   return <ul className="Tasks">{renderTasks()}</ul>;
