@@ -21,11 +21,7 @@ const Tasks = ({ tasks, status }) => {
     });
   };
 
-  return (
-    <div>
-      <ul className="Tasks">{renderTasks()}</ul>
-    </div>
-  );
+  return <ul className="Tasks">{renderTasks()}</ul>;
 };
 
 export default Tasks;

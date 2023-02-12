@@ -55,18 +55,24 @@ function App() {
     <div className="App">
       <div className="content-container">
         <TaskForm setTasks={setTasks} />
-        <taskContext.Provider
-          value={{ setCompleted, rearrangeTasks, deleteTask, updateTask }}
-        >
-          <Tasks tasks={tasks} status={status} />
-        </taskContext.Provider>
-        <TasksFooter
-          tasks={tasks}
-          status={status}
-          setStatus={setStatus}
-          clearCompleted={clearCompleted}
-        />
+
+        <div className="content-bottom">
+          <taskContext.Provider
+            value={{ setCompleted, rearrangeTasks, deleteTask, updateTask }}
+          >
+            <Tasks tasks={tasks} status={status} />
+          </taskContext.Provider>
+
+          <TasksFooter
+            tasks={tasks}
+            status={status}
+            setStatus={setStatus}
+            clearCompleted={clearCompleted}
+          />
+        </div>
       </div>
+
+      <p className="drag-text">Drag and drop to reorder list</p> 
     </div>
   );
 }

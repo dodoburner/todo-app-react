@@ -4,19 +4,49 @@
   justify-content: center;
   flex-direction: column;
   height: 100vh;
+  background-color: hsl(223, 19%, 93%);
 }
 
-.content-container {
-  border: 1px solid;
+input,
+textarea {
+  color: hsl(235, 19%, 35%);
+  transition: 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  outline-color: hsl(220, 98%, 61%);
+}
+
+.content-bottom,
+form {
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow: hidden;
 }
 
 form {
-  border-bottom: 1px solid;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding-bottom: 20px;
+  padding: 10px;
+}
+
+.submit-btn {
+  border: none;
+  padding: 7px 15px;
+  border-radius: 15px;
+  background-color: hsl(236, 33%, 92%);
+  color: hsl(235, 19%, 35%);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  color: white;
+  background-color: hsl(220, 98%, 61%);
 }
 
 label {
@@ -24,15 +54,24 @@ label {
 }
 
 .Task {
-  border-bottom: 1px solid;
+  border-bottom: 1px solid hsl(236, 33%, 92%);
   padding: 10px;
   cursor: pointer;
-  border-radius: 3px;
+}
+
+.Task input {
+  font-size: 15px;
+}
+
+.Task textarea {
+  border: 1px solid hsl(236, 33%, 92%);
+  padding: 5px;
 }
 
 .Task.completed input,
 .Task.completed textarea {
   text-decoration: line-through;
+  opacity: 0.5;
 }
 
 .task-top-part {
@@ -47,17 +86,35 @@ label {
   flex-direction: column;
 }
 
+.description-btn,
+.fa-trash-can {
+  color: hsl(236, 9%, 61%);
+  transition: 0.3s;
+}
+
+.description-btn:hover,
+.fa-trash-can:hover {
+  color: hsl(235, 19%, 35%);
+}
+
 .checkbox {
   width: 20px;
   height: 20px;
-  border: 1px solid black;
+  border: 1px solid hsl(233, 11%, 84%);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.checkbox:hover {
+  border-color: hsl(220, 98%, 61%);
 }
 
 .completed .checkbox {
   border: none;
+  color: hsl(220, 98%, 61%);
 }
 
 .title-input,
@@ -80,8 +137,14 @@ label {
 .tasks-footer {
   display: flex;
   justify-content: space-between;
-  width: 450px;
-  padding: 10px 5px;
+  align-items: center;
+  width: 500px;
+  padding: 15px;
+  color: hsl(236, 9%, 61%);
+}
+
+.tasks-footer div {
+  font-size: 14px;
 }
 
 .tasks-footer ul {
@@ -89,11 +152,17 @@ label {
   gap: 10px;
 }
 
-.tasks-footer li,
-.clear-completed-btn {
+.footer-btn:hover {
   cursor: pointer;
+  color: hsl(235, 21%, 11%);
+  transition: 0.3s;
 }
 
 li.active {
-  color: blue;
+  color: hsl(220, 98%, 61%);
+}
+
+.drag-text {
+  margin-top: 20px;
+  color: hsl(235, 19%, 35%);
 }

@@ -14,7 +14,7 @@ const TasksFooter = ({ tasks, status, setStatus, clearCompleted }) => {
           return (
             <li
               key={el}
-              className={status === el ? "active" : ""}
+              className={`footer-btn ${status === el ? "active" : ""}`}
               onClick={() => setStatus(el)}
             >
               {el}
@@ -23,7 +23,7 @@ const TasksFooter = ({ tasks, status, setStatus, clearCompleted }) => {
         })}
       </ul>
 
-      <div className="clear-completed-btn" onClick={clearCompleted}>
+      <div className="footer-btn" onClick={clearCompleted}>
         Clear Completed
       </div>
     </div>
