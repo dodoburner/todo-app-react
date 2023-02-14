@@ -3,14 +3,7 @@ import ReactTextareaAutosize from "react-textarea-autosize";
 import { taskContext } from "../App";
 
 const Task = ({ task, index }) => {
-  const {
-    title: prevTitle,
-    description: prevDescription,
-    completed,
-    id,
-  } = task;
-  const [title, setTitle] = useState(prevTitle);
-  const [description, setDescription] = useState(prevDescription);
+  const { title, description, completed, id } = task;
   const { setCompleted, rearrangeTasks, deleteTask, updateTask } =
     useContext(taskContext);
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
@@ -37,7 +30,6 @@ const Task = ({ task, index }) => {
   };
 
   const handleTitleUpdate = (e) => {
-    setTitle(e.target.value);
     const trimmed = e.target.value.trim();
     if (trimmed) {
       updateTask(id, trimmed, description);
@@ -45,7 +37,6 @@ const Task = ({ task, index }) => {
   };
 
   const handleDescriptionUpdate = (e) => {
-    setDescription(e.target.value);
     updateTask(id, title, e.target.value);
   };
 

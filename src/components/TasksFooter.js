@@ -3,6 +3,7 @@ const STATUSES = ["All", "Active", "Completed"];
 const TasksFooter = ({ tasks, status, setStatus, clearCompleted }) => {
   const remainingTasks = tasks.filter((el) => !el.completed);
   const length = remainingTasks.length;
+
   return (
     <div className="tasks-footer">
       <div>
